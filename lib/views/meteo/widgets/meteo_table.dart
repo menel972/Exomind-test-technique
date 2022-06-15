@@ -5,8 +5,47 @@ class MeteoTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Ici'),
+    return Center(
+      child: Table(
+        border: TableBorder.all(),
+        children: const [
+          TableRow(
+            children: [
+              Text('Paris'),
+              Text('Température'),
+              Text('Nuages'),
+            ],
+          ),
+          TableRow(
+            children: [
+              Text('Paris'),
+              Text('Température'),
+              Text('Nuages'),
+            ],
+          ),
+          TableRow(
+            children: [
+              Text('Paris'),
+              Text('Température'),
+              Text('Nuages'),
+            ],
+          ),
+          TableRow(
+            children: [
+              Text('Paris'),
+              Text('Température'),
+              Text('Nuages'),
+            ],
+          ),
+          TableRow(
+            children: [
+              Text('Paris'),
+              Text('Température'),
+              Text('Nuages'),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
