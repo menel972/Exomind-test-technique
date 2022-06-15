@@ -1,3 +1,4 @@
+import 'package:exomind_test/views/meteo/meteo_view.dart';
 import 'package:exomind_test/widgets/button/my_primary_button.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,10 @@ class Home extends StatelessWidget {
           SizedBox(height: _size.height * 0.05),
           MyPrimaryButton(
             text: 'Cliquer ici',
-            function: () {},
+            function: () => Navigator.pushNamed(
+              context,
+              MeteoView.route,
+            ),
           ),
         ],
       ),
