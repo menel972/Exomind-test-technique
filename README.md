@@ -20,7 +20,7 @@ Cette jauge doit se remplir à 100% en 60 secondes
 Toutes les 10 secondes elle doit faire un appel à une API météo pour 5 villes : 
 
 0 secondes Rennes, à 10 secondes Paris, à 20 secondes Nantes, etc pour Bordeaux et Lyon
-(par exemple l’api <a href='https://openweathermap.org/current'>OpenWeatherMap</a>, ou une autre API de météo de votre choix)
+(par exemple l’api <a href='https://openweathermap.org/current' target='_blank'>OpenWeatherMap</a>, ou une autre API de météo de votre choix)
 Un message d’attente est affiché pour faire patienter l’utilisateur
 3 messages qui doivent tourner toutes les 6 secondes (sans limite de temps)
 
