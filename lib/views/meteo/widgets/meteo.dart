@@ -1,3 +1,4 @@
+import 'package:exomind_test/services/bloc/provided/weather_bloc.dart';
 import 'package:exomind_test/views/meteo/widgets/gauge.dart';
 import 'package:exomind_test/widgets/button/my_icon_button.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ import 'meteo_table.dart';
 class Meteo extends StatelessWidget {
   Meteo({Key? key}) : super(key: key);
 
-  /// Messages used to make the user wait
+  // Messages used to make the user wait
   final List<String> _waitingMessage = [
     '',
     'Nous téléchargeons les données…',
@@ -19,7 +20,7 @@ class Meteo extends StatelessWidget {
     'Les données sont prêtes…',
   ];
 
-  /// Index of the waitingMessage
+  // Index of the waitingMessage
   int _waitingIndex(num value) {
     int ratio = value ~/ 6;
 
@@ -47,7 +48,7 @@ class Meteo extends StatelessWidget {
   Widget build(BuildContext context) {
     Size _size = MySize().size(context);
 
-    /// BLoC
+    // BLoC
     final _bloc = BlocProvider.of<TimerBloc>(context);
 
     return StreamBuilder<num>(
@@ -55,13 +56,13 @@ class Meteo extends StatelessWidget {
         builder: (context, snapshot) {
           num _value = snapshot.data!;
 
-          /// Elovolutive gauge width
+          // Elovolutive gauge width
           double gaugeLoaderWidth() {
             double facteur = _size.width * 0.8 / 60;
             return _value * facteur;
           }
 
-          /// Loaded data percentage
+          // Loaded data percentage
           int gaugeLoaderPercent() {
             double percent = (_value * 100) / 60;
             return percent.toInt();
@@ -72,11 +73,12 @@ class Meteo extends StatelessWidget {
             padding: EdgeInsets.symmetric(
                 vertical: _size.height * 0.05, horizontal: _size.width * 0.1),
             separatorBuilder: (context, i) {
-              if (i == 0) return SizedBox(height: _size.height * 0.7);
+              if (i == 0) return SizedBox(height: _size.height * 0.5);
               return SizedBox(height: _size.height * 0.02);
             },
             itemBuilder: (context, i) => [
-              const MeteoTable(),
+              BlocProvider<WeatherBloc>(
+                  bloc: WeatherBloc(), child: const MeteoTable()),
               Text(
                 _waitingMessage[_waitingIndex(_value)],
                 textAlign: TextAlign.center,

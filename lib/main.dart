@@ -9,7 +9,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  /// title of the application
+  // title of the application
   final String title = 'Exomind Test Technique';
 
   @override

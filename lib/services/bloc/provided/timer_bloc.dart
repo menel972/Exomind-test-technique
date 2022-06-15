@@ -11,6 +11,8 @@ class TimerBloc extends Bloc {
   Stream<num> get stream => _controller.stream;
 
   ///
+  /// start a timer wich add 1 to width each second
+  ///
   startTimer() {
     num width = 0;
     _sink.add(width);
