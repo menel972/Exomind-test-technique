@@ -1,13 +1,12 @@
+import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:exomind_test/services/models/weather/weather_response.dart';
-
 import '.api_secret_data.dart';
-import 'package:http/http.dart' as http;
 
 class WeatherApi {
+  // Secret Api Key for OpenWeather API
   final _apiKey = ApiSecretData().apiKey;
-
 
   ///
   ///Urls

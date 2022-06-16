@@ -1,12 +1,13 @@
-import 'package:exomind_test/services/bloc/provided/weather_bloc.dart';
-import 'package:exomind_test/views/meteo/widgets/gauge.dart';
-import 'package:exomind_test/widgets/button/my_icon_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../../services/bloc/bloc_provider.dart';
 import '../../../services/bloc/provided/timer_bloc.dart';
 import '../../../style/my_size.dart';
+
+import 'package:exomind_test/views/meteo/widgets/gauge.dart';
+import 'package:exomind_test/widgets/button/my_icon_button.dart';
 import 'meteo_table.dart';
+
 
 class Meteo extends StatelessWidget {
   Meteo({Key? key}) : super(key: key);
@@ -22,12 +23,12 @@ class Meteo extends StatelessWidget {
 
   // Index of the waitingMessage
   int _waitingIndex(num value) {
-    int ratio = value ~/ 6;
+    int ratio = (value ~/ 6) % 3;
 
     if (value == 60) return 4;
-    if (ratio % 2 == 0) return 1;
-    if (ratio % 2 == 1) return 2;
-    if (ratio % 2 == 2) return 3;
+    if (ratio == 0) return 1;
+    if (ratio == 1) return 2;
+    if (ratio == 2) return 3;
     return 0;
   }
 
@@ -56,13 +57,17 @@ class Meteo extends StatelessWidget {
         builder: (context, snapshot) {
           num value = snapshot.data!;
 
-          // Elovolutive gauge width
+          ///
+          /// Elovolutive gauge width
+          ///
           double gaugeLoaderWidth() {
             double facteur = _size.width * 0.8 / 60;
             return value * facteur;
           }
 
-          // Loaded data percentage
+          ///
+          /// Loaded data percentage
+          ///
           int gaugeLoaderPercent() {
             double percent = (value * 100) / 60;
             return percent.toInt();
@@ -77,11 +82,9 @@ class Meteo extends StatelessWidget {
               return SizedBox(height: _size.height * 0.02);
             },
             itemBuilder: (context, i) => [
-              BlocProvider<WeatherBloc>(
-                  bloc: WeatherBloc(),
-                  child: MeteoTable(
-                    loadingValue: value,
-                  )),
+              MeteoTable(
+                loadingValue: value,
+              ),
               Text(
                 _waitingMessage[_waitingIndex(value)],
                 textAlign: TextAlign.center,

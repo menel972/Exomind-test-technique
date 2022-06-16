@@ -3,9 +3,12 @@ import 'dart:async';
 import '../bloc.dart';
 
 class TimerBloc extends Bloc {
+
   TimerBloc() {
     startTimer();
   }
+
+  // Controls
   final _controller = StreamController<num>();
   Sink<num> get _sink => _controller.sink;
   Stream<num> get stream => _controller.stream;

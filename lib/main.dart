@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:exomind_test/services/provider/city_provider.dart';
 import 'package:exomind_test/views/home/home_view.dart';
 import 'package:exomind_test/views/meteo/meteo_view.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
+
 import 'package:exomind_test/services/models/weather/weather_response.dart';
-import 'package:flutter/cupertino.dart';
 
 class CityProvider with ChangeNotifier {
+  // All citie's data
   WeatherResponse? _paris;
   WeatherResponse? _bordeaux;
   WeatherResponse? _london;
@@ -14,6 +16,9 @@ class CityProvider with ChangeNotifier {
   WeatherResponse? get was => _washington;
   WeatherResponse? get mar => _marsaAlam;
 
+  ///
+  /// Used to set cities data
+  ///
   setParisData(WeatherResponse data) {
     _paris = data;
     notifyListeners();

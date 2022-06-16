@@ -1,9 +1,8 @@
-// ignore_for_file: avoid_print
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:exomind_test/services/api/weather_api.dart';
 import 'package:exomind_test/services/provider/city_provider.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../../services/models/weather/weather_response.dart';
 
@@ -13,6 +12,7 @@ class MeteoTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     ///
     /// All citie's data
     ///
@@ -38,9 +38,9 @@ class MeteoTable extends StatelessWidget {
         Provider.of<CityProvider>(context, listen: false)
             .setMarsaAlamData(data);
 
-    // defines if the gauge still loading
-    final isLoading = loadingValue < 60;
-
+    ///
+    /// Used to fecth data from the API an save it in the provider
+    ///
     setParisData() async {
       WeatherResponse paris = await WeatherApi().fetchParisWeather();
       setParis(paris);
@@ -66,6 +66,9 @@ class MeteoTable extends StatelessWidget {
       setMarsaAlam(marsaAlam);
     }
 
+    ///
+    /// Get cities data each 10 sec
+    ///
     getData() async {
       if (loadingValue == 0) setParisData();
       if (loadingValue == 10) setBordeauxData();
@@ -76,51 +79,52 @@ class MeteoTable extends StatelessWidget {
 
     getData();
 
-    if (isLoading) {
-      return const Center(child: CircularProgressIndicator());
-    } else {
-      return Center(
-        child: Table(
-          border: TableBorder.all(),
-          children: [
-            TableRow(
+    // defines if the gauge still loading
+    final isLoading = loadingValue < 60;
+
+    return isLoading
+        ? const Center(child: CircularProgressIndicator())
+        : Center(
+            child: Table(
+              border: TableBorder.all(),
               children: [
-                Text(par!.name!),
-                Text('${par.main!.temp} °C'),
-                Text('${par.weather![0].description}'),
+                TableRow(
+                  children: [
+                    Text(par!.name!),
+                    Text('${par.main!.temp} °C'),
+                    Text('${par.weather![0].description}'),
+                  ],
+                ),
+                TableRow(
+                  children: [
+                    Text(bor!.name!),
+                    Text('${bor.main!.temp} °C'),
+                    Text('${bor.weather![0].description}'),
+                  ],
+                ),
+                TableRow(
+                  children: [
+                    Text(lon!.name!),
+                    Text('${lon.main!.temp} °C'),
+                    Text('${lon.weather![0].description}'),
+                  ],
+                ),
+                TableRow(
+                  children: [
+                    Text(was!.name!),
+                    Text('${was.main!.temp} °C'),
+                    Text('${was.weather![0].description}'),
+                  ],
+                ),
+                TableRow(
+                  children: [
+                    Text(mar!.name!),
+                    Text('${mar.main!.temp} °C'),
+                    Text('${mar.weather![0].description}'),
+                  ],
+                ),
               ],
             ),
-            TableRow(
-              children: [
-                Text(bor!.name!),
-                Text('${bor.main!.temp} °C'),
-                Text('${bor.weather![0].description}'),
-              ],
-            ),
-            TableRow(
-              children: [
-                Text(lon!.name!),
-                Text('${lon.main!.temp} °C'),
-                Text('${lon.weather![0].description}'),
-              ],
-            ),
-            TableRow(
-              children: [
-                Text(was!.name!),
-                Text('${was.main!.temp} °C'),
-                Text('${was.weather![0].description}'),
-              ],
-            ),
-            TableRow(
-              children: [
-                Text(mar!.name!),
-                Text('${mar.main!.temp} °C'),
-                Text('${mar.weather![0].description}'),
-              ],
-            ),
-          ],
-        ),
-      );
-    }
+          );
   }
 }
