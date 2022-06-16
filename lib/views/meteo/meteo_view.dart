@@ -1,8 +1,9 @@
-import 'package:exomind_test/services/bloc/bloc_provider.dart';
-import 'package:exomind_test/services/bloc/provided/timer_bloc.dart';
-import 'package:exomind_test/views/meteo/widgets/meteo.dart';
 import 'package:flutter/material.dart';
 
+import 'package:exomind_test/services/bloc/bloc_provider.dart';
+import 'package:exomind_test/services/bloc/provided/timer_bloc.dart';
+
+import 'package:exomind_test/views/meteo/widgets/meteo.dart';
 import 'package:exomind_test/widgets/appbar/my_app_bar.dart';
 
 class MeteoView extends StatelessWidget {

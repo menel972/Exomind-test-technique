@@ -1,8 +1,10 @@
-import 'package:exomind_test/views/meteo/meteo_view.dart';
-import 'package:exomind_test/widgets/button/my_primary_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../../style/my_size.dart';
+
+import 'package:exomind_test/views/meteo/meteo_view.dart';
+import 'package:exomind_test/widgets/button/my_primary_button.dart';
+
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
