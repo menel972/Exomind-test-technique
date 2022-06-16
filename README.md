@@ -3,6 +3,23 @@
 Test technique réalisé avec Flutter 2.10.5 pour Exomind.
 
 
+<p align="center">
+<img alt="Flutter" src="https://img.shields.io/badge/Flutter-02569B?style=flat-square&logo=flutter&logoColor=white" />
+<img alt="BLoC" src="https://img.shields.io/badge/BLoC-02569B?style=flat-square&logo=flutter&logoColor=white" />
+<img alt="Provider" src="https://img.shields.io/badge/Provider-02569B?style=flat-square&logo=flutter&logoColor=white" />
+<img alt="Http" src="https://img.shields.io/badge/Http-02569B?style=flat-square&logo=flutter&logoColor=white" />
+<img alt="Dart:async" src="https://img.shields.io/badge/Dart:Async-02569B?style=flat-square&logo=flutter&logoColor=white" />
+<img alt="Dart" src="https://img.shields.io/badge/Dart-0175C2?style=flat-square&logo=dart&logoColor=white" />
+</p>
+
+
+<p align="center">
+<img src="screenshots/screenshot_1.png" height="400" title="preview homescreen">
+<img src="screenshots/screenshot_2.png" height="400" title="preview loading screen">
+<img src="screenshots/screenshot_3.png" height="400" title="preview loaded datas">
+</p>
+
+
 ## Sujet
 
 Créer une application qui : 
