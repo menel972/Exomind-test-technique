@@ -54,17 +54,17 @@ class Meteo extends StatelessWidget {
     return StreamBuilder<num>(
         stream: _bloc.stream,
         builder: (context, snapshot) {
-          num _value = snapshot.data!;
+          num value = snapshot.data!;
 
           // Elovolutive gauge width
           double gaugeLoaderWidth() {
             double facteur = _size.width * 0.8 / 60;
-            return _value * facteur;
+            return value * facteur;
           }
 
           // Loaded data percentage
           int gaugeLoaderPercent() {
-            double percent = (_value * 100) / 60;
+            double percent = (value * 100) / 60;
             return percent.toInt();
           }
 
@@ -78,13 +78,16 @@ class Meteo extends StatelessWidget {
             },
             itemBuilder: (context, i) => [
               BlocProvider<WeatherBloc>(
-                  bloc: WeatherBloc(), child: const MeteoTable()),
+                  bloc: WeatherBloc(),
+                  child: MeteoTable(
+                    loadingValue: value,
+                  )),
               Text(
-                _waitingMessage[_waitingIndex(_value)],
+                _waitingMessage[_waitingIndex(value)],
                 textAlign: TextAlign.center,
               ),
               switchReloadGauge(
-                value: _value,
+                value: value,
                 function: () => _bloc.startTimer(),
                 width: gaugeLoaderWidth(),
                 percent: gaugeLoaderPercent(),
